@@ -1,13 +1,9 @@
 "use client";
 
-import { useConfettiStore } from "@/Hooks/use-confetti-store";
 import { cn } from "@/lib/utils";
 import MuxPlayer from "@mux/mux-player-react";
-import axios from "axios";
 import { Loader2, Lock } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
-import toast from "react-hot-toast";
 
 interface VideoPlayerProps {
     playbackId?: string;
