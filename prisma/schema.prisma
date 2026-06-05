@@ -1,10 +1,10 @@
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+  previewFeatures = ["fullTextSearchPostgres"]
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -27,7 +27,6 @@ model Course {
   purchases   Purchase[]
 
   @@index([categoryId])
-  @@fulltext([title])
 }
 
 model Attachment {
@@ -105,7 +104,7 @@ model Purchase {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([userId , courseId])
+  @@unique([userId, courseId])
   @@index([courseId])
 }
 

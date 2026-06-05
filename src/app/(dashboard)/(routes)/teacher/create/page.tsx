@@ -3,12 +3,7 @@
 import * as z from "zod";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-    ControllerFieldState,
-    ControllerRenderProps,
-    useForm,
-    UseFormStateReturn,
-} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import {
     Form,
     FormControl,
@@ -18,15 +13,10 @@ import {
     FormLabel
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {
-    useForm
-} from "react-hook-form";
 import toast from "react-hot-toast";
-import * as z from "zod";
 
 const formSchema = z.object({
     title: z.string().min(1, { message: "Title is required" }),
@@ -49,7 +39,7 @@ function CreatePage() {
             console.log(response)
             router.push(`/teacher/courses/${response.data.id}`);
             toast.success("Course Created")
-        } catch (error : any) {
+        } catch (error: any) {
             toast.error("Something went wrong")
         }
     };
